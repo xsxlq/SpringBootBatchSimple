@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xsxlq.batch.mapping.ShopGoodsTypeMapper" >
+  <resultMap id="BaseResultMap" type="cn.xsxlq.batch.springbatch_simple.pojo.ShopGoodsType" >
+    <id column="goodsTypeId" property="goodstypeid" jdbcType="INTEGER" />
+    <result column="goodsTypeName" property="goodstypename" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goodsTypeId, goodsTypeName, parentId
+  </sql>
+
+  <select id="selectCount" resultType="int">
+    select
+    count(1)
+    from shopgoodstype
+  </select>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="Map" >
+    select
+    <include refid="Base_Column_List" />
+    from shopgoodstype
+    order by goodstypeid
+    limit #{_pagesize} OFFSET #{_skiprows}
+  </select>
+</mapper>

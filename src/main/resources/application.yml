@@ -1,0 +1,29 @@
+#配置服务器
+server:
+  port: 8081
+#配置spring
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      #spring.servlet.multipart.max-file-size限制单个文件的最大值
+      #spring.servlet.multipart.max-request-size限制上传的多个文件的总大小
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+  datasource:
+    name: xsxlq
+    url: jdbc:mysql://127.0.0.1:3306/batch
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+#配置mybatis
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: cn.xsxlq.batch.springbatch_simple.pojo
