@@ -27,7 +27,7 @@ import javax.annotation.Resource;
 @EnableBatchProcessing
 public class HelloWordConfig {
 
-    @Resource(name = "sqlSessionTemplate")
+    @Resource(name = "batchSqlSessionTemplate")
     private SqlSessionTemplate sqlSessionTemplate;
 
     @Autowired

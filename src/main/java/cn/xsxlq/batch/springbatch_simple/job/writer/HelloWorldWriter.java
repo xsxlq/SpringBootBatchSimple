@@ -1,8 +1,11 @@
 package cn.xsxlq.batch.springbatch_simple.job.writer;
 
+import cn.xsxlq.batch.springbatch_simple.pojo.ShopGoodsType;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -13,9 +16,11 @@ import java.util.List;
  */
 @Component
 public class HelloWorldWriter implements ItemWriter {
-
+    @Resource(name = "marketSqlSessionTemplate")
+    private SqlSessionTemplate sqlSessionTemplate;
     @Override
     public void write(List items) throws Exception {
-        items.forEach(System.out::println);
+        System.out.println(sqlSessionTemplate.insert("cn.xsxlq.batch.mapping.ShopGoodsTypeMapper.insertSelective",
+                (List<ShopGoodsType>)items) != 0 ? "OK" : "Error");
     }
 }

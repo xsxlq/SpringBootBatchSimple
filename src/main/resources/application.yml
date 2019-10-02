@@ -18,11 +18,16 @@ spring:
           enabled: true
           paths: /**
   datasource:
-    name: xsxlq
-    url: jdbc:mysql://127.0.0.1:3306/batch
-    username: root
-    password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    batch:
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/batch
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+    market:
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/market
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
 #配置mybatis
 mybatis:
   mapper-locations: classpath:mapping/*.xml

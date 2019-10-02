@@ -7,9 +7,9 @@ import lombok.Data;
  */
 @Data
 public class ShopGoodsType {
-    private Integer goodstypeid;
+    private Integer goodsTypeId;
 
-    private String goodstypename;
+    private String goodsTypeName;
 
-    private Integer parentid;
+    private Integer parentId;
 }

@@ -11,7 +11,6 @@ import org.mybatis.spring.batch.MyBatisPagingItemReader;
  */
 public class HelloWorldReader extends MyBatisPagingItemReader{
 
-
     public HelloWorldReader(SqlSessionTemplate sqlSessionTemplate){
         setSqlSessionFactory(sqlSessionTemplate.getSqlSessionFactory());
         setQueryId("cn.xsxlq.batch.mapping.ShopGoodsTypeMapper.selectList");
