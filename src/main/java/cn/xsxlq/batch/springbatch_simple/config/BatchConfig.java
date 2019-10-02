@@ -1,9 +1,9 @@
 package cn.xsxlq.batch.springbatch_simple.config;
 
 import cn.xsxlq.batch.springbatch_simple.comm.Common;
-import cn.xsxlq.batch.springbatch_simple.job.process.HelloWorldProcess;
-import cn.xsxlq.batch.springbatch_simple.job.reader.HelloWorldReader;
-import cn.xsxlq.batch.springbatch_simple.job.writer.HelloWorldWriter;
+import cn.xsxlq.batch.springbatch_simple.job.process.BatchProcess;
+import cn.xsxlq.batch.springbatch_simple.job.reader.BatchReader;
+import cn.xsxlq.batch.springbatch_simple.job.writer.BatchWriter;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -25,7 +25,7 @@ import javax.annotation.Resource;
  */
 @Configuration
 @EnableBatchProcessing
-public class HelloWordConfig {
+public class BatchConfig {
 
     @Resource(name = "batchSqlSessionTemplate")
     private SqlSessionTemplate sqlSessionTemplate;
@@ -38,32 +38,32 @@ public class HelloWordConfig {
 
 
     @Autowired
-    private HelloWorldProcess helloWorldProcess;
+    private BatchProcess batchWorldProcess;
 
     @Autowired
-    private HelloWorldWriter helloWorldWriter;
+    private BatchWriter batchWorldWriter;
 
 
     @Bean
-    public Job helloWorldJob(){
-        return jobBuilderFactory.get("helloWorldJob")
-                .start(helloWorldStep())
+    public Job batchWorldJob(){
+        return jobBuilderFactory.get("batchWorldJob")
+                .start(batchWorldStep())
                 .build();
     }
 
     @Bean
-    public Step helloWorldStep(){
-        return stepBuilderFactory.get("helloWorldStep")
+    public Step batchWorldStep(){
+        return stepBuilderFactory.get("batchWorldStep")
                 .chunk(Common.chunkCount)
-                .reader(helloWorldReader())
-                .processor(helloWorldProcess)
-                .writer(helloWorldWriter)
+                .reader(batchWorldReader())
+                .processor(batchWorldProcess)
+                .writer(batchWorldWriter)
                 .build();
     }
 
     @Bean
     @StepScope
-    public HelloWorldReader helloWorldReader(){
-        return new HelloWorldReader(sqlSessionTemplate);
+    public BatchReader batchWorldReader(){
+        return new BatchReader(sqlSessionTemplate);
     }
 }

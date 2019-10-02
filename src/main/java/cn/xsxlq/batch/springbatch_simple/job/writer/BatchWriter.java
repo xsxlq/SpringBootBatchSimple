@@ -15,7 +15,7 @@ import java.util.List;
  * @date: 2019/10/1 14:07
  */
 @Component
-public class HelloWorldWriter implements ItemWriter {
+public class BatchWriter implements ItemWriter {
     @Resource(name = "marketSqlSessionTemplate")
     private SqlSessionTemplate sqlSessionTemplate;
     @Override

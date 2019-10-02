@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @date: 2019/10/1 14:08
  */
 @Component
-public class HelloWorldProcess implements ItemProcessor {
+public class BatchProcess implements ItemProcessor {
     @Override
     public Object process(Object item) throws Exception {
         return item;
