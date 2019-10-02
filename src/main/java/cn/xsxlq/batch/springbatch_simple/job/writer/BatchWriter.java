@@ -20,7 +20,7 @@ public class BatchWriter implements ItemWriter {
     private SqlSessionTemplate sqlSessionTemplate;
     @Override
     public void write(List items) throws Exception {
-        System.out.println(sqlSessionTemplate.insert("cn.xsxlq.batch.mapping.ShopGoodsTypeMapper.insertSelective",
-                (List<ShopGoodsType>)items) != 0 ? "OK" : "Error");
+        sqlSessionTemplate.insert("cn.xsxlq.batch.mapping.ShopGoodsTypeMapper.insertSelective",
+                (List<ShopGoodsType>)items);
     }
 }
