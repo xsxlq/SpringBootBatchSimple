@@ -12,4 +12,13 @@ public class ShopGoodsType {
     private String goodsTypeName;
 
     private Integer parentId;
+
+    @Override
+    public String toString() {
+        return "ShopGoodsType{" +
+                "goodsTypeId=" + goodsTypeId +
+                ", goodsTypeName='" + goodsTypeName + '\'' +
+                ", parentId=" + parentId +
+                '}';
+    }
 }

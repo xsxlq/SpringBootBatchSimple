@@ -27,8 +27,8 @@ import javax.annotation.Resource;
 @EnableBatchProcessing
 public class BatchConfig {
 
-    @Resource(name = "batchSqlSessionTemplate")
-    private SqlSessionTemplate sqlSessionTemplate;
+//    @Resource(name = "batchSqlSessionTemplate")
+//    private SqlSessionTemplate sqlSessionTemplate;
 
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
@@ -43,6 +43,9 @@ public class BatchConfig {
     @Autowired
     private BatchWriter batchWorldWriter;
 
+    @Autowired
+    private BatchReader batchReader;
+
 
     @Bean
     public Job batchWorldJob(){
@@ -55,15 +58,15 @@ public class BatchConfig {
     public Step batchWorldStep(){
         return stepBuilderFactory.get("batchWorldStep")
                 .chunk(Common.chunkCount)
-                .reader(batchWorldReader())
+                .reader(batchReader)
                 .processor(batchWorldProcess)
                 .writer(batchWorldWriter)
                 .build();
     }
 
-    @Bean
-    @StepScope
-    public BatchReader batchWorldReader(){
-        return new BatchReader(sqlSessionTemplate);
-    }
+//    @Bean
+//    @StepScope
+//    public BatchReader batchWorldReader(){
+//        return new BatchReader(sqlSessionTemplate);
+//    }
 }
